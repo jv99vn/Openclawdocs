@@ -1,0 +1,23 @@
+{
+  "name": "openclaw-docs-vi",
+  "version": "1.0.0",
+  "description": "Tài liệu OpenClaw bằng Tiếng Việt",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0"
+  },
+  "keywords": [
+    "openclaw",
+    "documentation",
+    "vietnamese",
+    "ai",
+    "messaging"
+  ],
+  "author": "",
+  "license": "MIT"
+}
