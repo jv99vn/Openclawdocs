@@ -3,70 +3,87 @@ layout: home
 
 hero:
   name: "OpenClaw"
-  text: "Tài liệu Tiếng Việt"
-  tagline: Cổng tin nhắn kết nối nhiều nền tảng giao tiếp với các AI coding agent
+  text: "Tài liệu tiếng Việt"
+  tagline: Cổng AI Assistant đa nền tảng - WhatsApp, Telegram, Discord, Slack và nhiều hơn nữa
   actions:
     - theme: brand
-      text: Bắt đầu
-      link: /guide/install
+      text: Bắt đầu nhanh
+      link: /start-here/getting-started
     - theme: alt
-      text: Xem trên GitHub
-      link: https://github.com/openclaw
+      text: Cài đặt
+      link: /install/install
+    - theme: alt
+      text: GitHub
+      link: https://github.com/openclaw/openclaw
 
 features:
-  - icon: 🔗
+  - icon: 🚀
+    title: Dễ dàng thiết lập
+    details: Cài đặt và chạy trong vài phút với script tự động và wizard onboarding tương tác.
+  - icon: 💬
     title: Đa nền tảng
-    details: Kết nối WhatsApp, Telegram, Discord, iMessage, Slack và nhiều nền tảng khác thông qua một Gateway duy nhất.
+    details: Hỗ trợ 20+ nền tảng nhắn tin - WhatsApp, Telegram, Discord, Slack, Signal, iMessage và nhiều hơn.
   - icon: 🤖
-    title: Tích hợp AI
-    details: Hỗ trợ nhiều nhà cung cấp LLM như Anthropic, OpenAI, Venice AI, Google và nhiều hơn nữa.
-  - icon: 🛠️
+    title: Nhiều Model AI
+    details: Tích hợp Anthropic Claude, OpenAI GPT, Venice AI, Ollama và nhiều providers khác.
+  - icon: 🔧
     title: Công cụ mạnh mẽ
-    details: Tự động hóa trình duyệt, canvas rendering, quản lý node và tác vụ theo lịch.
-  - icon: 🔐
-    title: Bảo mật
-    details: Xác thực dựa trên token, ghép nối thiết bị với quy trình phê duyệt, hỗ trợ Tailscale/VPN.
-  - icon: 📱
-    title: Ứng dụng đồng hành
-    details: Ứng dụng native cho macOS, iOS và Android để quản lý và điều khiển.
-  - icon: 🔌
-    title: Mở rộng với Hooks
-    details: Hệ thống hook dựa trên sự kiện để tự động hóa các hành động theo phản hồi của agent.
+    details: Browser automation, file operations, web search, messaging và nhiều tools tích hợp sẵn.
+  - icon: 🔒
+    title: Local-first & Privacy
+    details: Chạy trên phần cứng của bạn, dữ liệu ở local. Kiểm soát hoàn toàn.
+  - icon: 🌐
+    title: Remote Access
+    details: Hỗ trợ Tailscale, SSH tunneling cho truy cập từ xa an toàn.
 ---
 
-## Tổng quan
+## Quick Start
 
-OpenClaw là một cổng tin nhắn (messaging gateway) kết nối nhiều nền tảng giao tiếp (WhatsApp, Telegram, Discord, iMessage) với các AI coding agent. Hệ thống sử dụng kiến trúc Gateway tập trung để quản lý các kết nối kênh và điều phối tương tác với agent.
+### Cài đặt
 
-## Tích hợp nền tảng chính
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
 
-| Nền tảng | Công nghệ |
-|----------|-----------|
-| **WhatsApp** | Giao thức Baileys |
-| **Telegram** | grammY Bot API |
-| **Discord** | channels.discord.js |
-| **iMessage** | imsg CLI (macOS) |
-| **Mattermost** | Plugin với Bot API và WebSocket |
+### Thiết lập
 
-## Kiến trúc cốt lõi
+```bash
+openclaw onboard --install-daemon
+```
 
-Gateway hoạt động như một tiến trình duy nhất chạy liên tục, quản lý tất cả các kết nối kênh. Nó expose:
+### Bắt đầu chat
 
-- **WebSocket control plane** tại `ws://127.0.0.1:18789` (mặc định loopback)
-- **HTTP Canvas host** trên cổng `18793`
-- **Giao diện Control UI** trên trình duyệt
+```bash
+openclaw dashboard
+```
 
-## Yêu cầu cài đặt
+## Cấu trúc tài liệu
 
-- Node.js phiên bản **22** trở lên
-- Khuyến nghị: cài đặt toàn cục npm/pnpm
-- Tùy chọn: dịch vụ daemon qua systemd hoặc launchd
+| Section | Nội dung |
+|---------|----------|
+| [Bắt đầu](/start-here/getting-started) | Hướng dẫn nhanh, thiết lập, pairing |
+| [Khái niệm](/concepts/architecture) | Gateway, Channels, Providers, Tools |
+| [CLI Reference](/cli/setup) | Tất cả CLI commands |
+| [Trợ giúp](/help/faq) | FAQ, khắc phục sự cố |
 
-## Tính năng nổi bật
+## Các trang phổ biến
 
-- ✅ Streaming message chunks
-- ✅ Multi-agent routing với workspace isolation
-- ✅ Xác thực subscription (Anthropic/OpenAI)
-- ✅ Xử lý media bao gồm hình ảnh và âm thanh
-- ✅ Group chat với kích hoạt dựa trên mention
-- ✅ Ứng dụng đồng hành cho macOS, iOS và Android
+- [Bắt đầu nhanh](/start-here/getting-started) - Thiết lập OpenClaw từ đầu
+- [Gateway](/concepts/gateway) - Hiểu về Gateway daemon
+- [Kênh trò chuyện](/concepts/channels) - WhatsApp, Telegram, Discord...
+- [Providers](/concepts/providers) - Cấu hình AI models
+- [FAQ](/help/faq) - Câu hỏi thường gặp
+
+## Đóng góp
+
+Tài liệu này được dịch từ [docs.openclaw.ai](https://docs.openclaw.ai). Nếu bạn muốn đóng góp:
+
+1. Fork repository
+2. Tạo pull request
+3. Report issues tại GitHub
+
+---
+
+::: info Phiên bản gốc
+Tài liệu gốc tiếng Anh: [docs.openclaw.ai](https://docs.openclaw.ai)
+:::
