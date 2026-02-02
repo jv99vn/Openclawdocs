@@ -1,89 +1,89 @@
-# Plugins
+# Plugins (Tiện ích mở rộng)
 
-Plugins mở rộng functionality của OpenClaw với additional tools, channels, và providers.
+Plugins mở rộng chức năng của OpenClaw với thêm tools, channels, và providers.
 
 ## Tổng quan
 
-- **Extensible** - Thêm features mới
-- **Modular** - Install chỉ những gì cần
-- **Community** - Plugins từ community
-- **Official** - Official plugins từ OpenClaw team
+- **Mở rộng được** - Thêm tính năng mới
+- **Module hóa** - Cài đặt chỉ những gì cần
+- **Cộng đồng** - Plugins từ cộng đồng
+- **Chính thức** - Plugins chính thức từ OpenClaw team
 
-## Plugin Types
+## Loại Plugin
 
-| Type | Description |
-|------|-------------|
-| **Channel** | New messaging platforms |
-| **Provider** | New LLM providers |
-| **Tool** | New agent tools |
-| **Skill** | New agent skills |
-| **Integration** | Third-party integrations |
+| Loại | Mô tả |
+|------|-------|
+| **Channel** | Nền tảng nhắn tin mới |
+| **Provider** | Nhà cung cấp LLM mới |
+| **Tool** | Công cụ agent mới |
+| **Skill** | Kỹ năng agent mới |
+| **Integration** | Tích hợp bên thứ ba |
 
-## CLI Commands
+## Lệnh CLI
 
-### List Installed
+### Liệt kê đã cài
 
 ```bash
 openclaw plugins list
 ```
 
-### Search Available
+### Tìm kiếm có sẵn
 
 ```bash
 openclaw plugins search voice
 ```
 
-### Install
+### Cài đặt
 
 ```bash
 openclaw plugins install @openclaw/voice-call
 ```
 
-### Uninstall
+### Gỡ cài đặt
 
 ```bash
 openclaw plugins uninstall @openclaw/voice-call
 ```
 
-### Update
+### Cập nhật
 
 ```bash
-# Update specific plugin
+# Cập nhật plugin cụ thể
 openclaw plugins update @openclaw/voice-call
 
-# Update all plugins
+# Cập nhật tất cả plugins
 openclaw plugins update --all
 ```
 
-## Official Plugins
+## Plugins chính thức
 
-### Channels
+### Kênh
 
-| Plugin | Description |
-|--------|-------------|
-| `@openclaw/zalo` | Zalo messaging |
-| `@openclaw/line` | LINE messaging |
-| `@openclaw/matrix` | Matrix protocol |
+| Plugin | Mô tả |
+|--------|-------|
+| `@openclaw/zalo` | Tin nhắn Zalo |
+| `@openclaw/line` | Tin nhắn LINE |
+| `@openclaw/matrix` | Giao thức Matrix |
 
-### Tools
+### Công cụ
 
-| Plugin | Description |
-|--------|-------------|
-| `@openclaw/voice-call` | Voice calling |
-| `@openclaw/code-interpreter` | Code execution |
-| `@openclaw/image-gen` | Image generation |
+| Plugin | Mô tả |
+|--------|-------|
+| `@openclaw/voice-call` | Gọi thoại |
+| `@openclaw/code-interpreter` | Thực thi code |
+| `@openclaw/image-gen` | Tạo hình ảnh |
 
-### Integrations
+### Tích hợp
 
-| Plugin | Description |
-|--------|-------------|
-| `@openclaw/notion` | Notion integration |
-| `@openclaw/github` | GitHub integration |
-| `@openclaw/calendar` | Calendar integration |
+| Plugin | Mô tả |
+|--------|-------|
+| `@openclaw/notion` | Tích hợp Notion |
+| `@openclaw/github` | Tích hợp GitHub |
+| `@openclaw/calendar` | Tích hợp Lịch |
 
-## Configuration
+## Cấu hình
 
-### Enable/Disable
+### Bật/Tắt
 
 ```json5
 {
@@ -98,7 +98,7 @@ openclaw plugins update --all
 }
 ```
 
-### Plugin Settings
+### Cài đặt Plugin
 
 ```json5
 {
@@ -115,7 +115,7 @@ openclaw plugins update --all
 }
 ```
 
-## Installing from Sources
+## Cài đặt từ nguồn
 
 ### npm
 
@@ -129,15 +129,15 @@ openclaw plugins install @openclaw/plugin-name
 openclaw plugins install github:user/repo
 ```
 
-### Local
+### Địa phương
 
 ```bash
 openclaw plugins install ./path/to/plugin
 ```
 
-## Plugin Development
+## Phát triển Plugin
 
-### Structure
+### Cấu trúc
 
 ```
 my-plugin/
@@ -163,7 +163,7 @@ my-plugin/
 }
 ```
 
-### Tool Example
+### Ví dụ Tool
 
 ```javascript
 // tools/my-tool.js
@@ -182,9 +182,9 @@ export default {
 };
 ```
 
-## Plugin API
+## API Plugin
 
-### Lifecycle Hooks
+### Hooks vòng đời
 
 ```javascript
 export default {
@@ -205,7 +205,7 @@ export default {
 };
 ```
 
-### Access Gateway
+### Truy cập Gateway
 
 ```javascript
 export default {
@@ -222,14 +222,14 @@ export default {
 };
 ```
 
-## Plugin Registry
+## Kho Plugin
 
-Official plugins registry:
+Kho plugins chính thức:
 ```
 https://plugins.openclaw.ai
 ```
 
-### Publish
+### Xuất bản
 
 ```bash
 # Login
@@ -239,11 +239,11 @@ openclaw plugins login
 openclaw plugins publish
 ```
 
-## Security
+## Bảo mật
 
-### Permissions
+### Quyền hạn
 
-Plugins request permissions:
+Plugins yêu cầu quyền:
 
 ```json
 {
@@ -257,42 +257,42 @@ Plugins request permissions:
 }
 ```
 
-### Sandboxing
+### Sandbox
 
-Plugins run trong sandboxed environment:
-- Limited file access
-- Network restrictions
-- No direct system access
+Plugins chạy trong môi trường cô lập:
+- Truy cập file giới hạn
+- Hạn chế mạng
+- Không truy cập hệ thống trực tiếp
 
-### Review
+### Đánh giá
 
-Official plugins được reviewed trước khi publish.
+Plugins chính thức được đánh giá trước khi xuất bản.
 
-## Troubleshooting
+## Khắc phục sự cố
 
-### Plugin không load
+### Plugin không tải
 
-1. Check compatibility:
+1. Kiểm tra tương thích:
    ```bash
    openclaw plugins check @plugin/name
    ```
-2. Verify dependencies
-3. Check logs
+2. Xác nhận dependencies
+3. Kiểm tra logs
 
-### Conflicts
+### Xung đột
 
 ```bash
-# Check conflicts
+# Kiểm tra xung đột
 openclaw plugins conflicts
 
-# Resolve
+# Giải quyết
 openclaw plugins resolve
 ```
 
-### Update fails
+### Cập nhật thất bại
 
 ```bash
-# Force reinstall
+# Cài đặt lại bắt buộc
 openclaw plugins install --force @plugin/name
 ```
 
