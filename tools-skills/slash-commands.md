@@ -1,75 +1,75 @@
-# Slash Commands
+# Lệnh Slash
 
-Slash Commands cho phép user control trực tiếp các tính năng của OpenClaw thông qua commands bắt đầu bằng `/`.
+Lệnh Slash cho phép người dùng điều khiển trực tiếp các tính năng của OpenClaw thông qua commands bắt đầu bằng `/`.
 
 ## Tổng quan
 
-- **Direct control** - Bypass agent
-- **Quick actions** - Nhanh chóng thực hiện actions
-- **Configurable** - Custom commands
-- **Universal** - Hoạt động trên tất cả channels
+- **Điều khiển trực tiếp** - Bỏ qua agent
+- **Hành động nhanh** - Nhanh chóng thực hiện tác vụ
+- **Tùy chỉnh được** - Tạo commands riêng
+- **Phổ biến** - Hoạt động trên tất cả channels
 
-## Built-in Commands
+## Các lệnh có sẵn
 
-### Session Management
+### Quản lý Session
 
-| Command | Description |
+| Lệnh | Mô tả |
+|------|-------|
+| `/new` | Bắt đầu session mới |
+| `/clear` | Xóa lịch sử session |
+| `/session <name>` | Chuyển sang session |
+| `/sessions` | Liệt kê sessions |
+
+### Điều khiển Model
+
+| Lệnh | Mô tả |
+|------|-------|
+| `/model <name>` | Chuyển model |
+| `/models` | Liệt kê các models có sẵn |
+| `/thinking <level>` | Đặt mức độ suy nghĩ |
+
+### Điều khiển Agent
+
+| Lệnh | Mô tả |
+|------|-------|
+| `/agent <name>` | Chuyển agent |
+| `/agents` | Liệt kê agents |
+| `/stop` | Dừng generation hiện tại |
+
+### Công cụ
+
+| Lệnh | Mô tả |
+|------|-------|
+| `/tool <name>` | Gọi tool trực tiếp |
+| `/tools` | Liệt kê các tools có sẵn |
+| `/exec <cmd>` | Thực thi lệnh shell |
+
+### Bộ nhớ
+
+| Lệnh | Mô tả |
 |---------|-------------|
-| `/new` | Start new session |
-| `/clear` | Clear session history |
-| `/session <name>` | Switch to session |
-| `/sessions` | List sessions |
+| `/remember <text>` | Lưu vào bộ nhớ |
+| `/forget <text>` | Xóa khỏi bộ nhớ |
+| `/recall <query>` | Tìm kiếm bộ nhớ |
 
-### Model Control
+### Hệ thống
 
-| Command | Description |
-|---------|-------------|
-| `/model <name>` | Switch model |
-| `/models` | List available models |
-| `/thinking <level>` | Set thinking level |
-
-### Agent Control
-
-| Command | Description |
-|---------|-------------|
-| `/agent <name>` | Switch agent |
-| `/agents` | List agents |
-| `/stop` | Stop current generation |
-
-### Tools
-
-| Command | Description |
-|---------|-------------|
-| `/tool <name>` | Invoke tool directly |
-| `/tools` | List available tools |
-| `/exec <cmd>` | Execute shell command |
-
-### Memory
-
-| Command | Description |
-|---------|-------------|
-| `/remember <text>` | Save to memory |
-| `/forget <text>` | Remove from memory |
-| `/recall <query>` | Search memory |
-
-### System
-
-| Command | Description |
-|---------|-------------|
-| `/status` | Show status |
-| `/help` | Show help |
-| `/version` | Show version |
-| `/config` | Show config |
+| Lệnh | Mô tả |
+|------|-------|
+| `/status` | Hiển thị trạng thái |
+| `/help` | Hiển thị trợ giúp |
+| `/version` | Hiển thị phiên bản |
+| `/config` | Hiển thị cấu hình |
 
 ## Sử dụng
 
-### Basic
+### Cơ bản
 
 ```
 /model anthropic/claude-sonnet-4
 ```
 
-### With Arguments
+### Với đối số
 
 ```
 /session work
@@ -77,23 +77,23 @@ Slash Commands cho phép user control trực tiếp các tính năng của OpenC
 /remember Important: meeting at 3pm
 ```
 
-### Chained
+### Nối tiếp
 
 ```
 /new /model anthropic/claude-opus-4
 ```
 
-## Session Commands
+## Lệnh Session
 
 ### /new
 
-Start fresh session:
+Bắt đầu session mới:
 
 ```
 /new
 ```
 
-With name:
+Với tên:
 
 ```
 /new project-alpha
@@ -101,7 +101,7 @@ With name:
 
 ### /clear
 
-Clear current session history:
+Xóa lịch sử session hiện tại:
 
 ```
 /clear
@@ -109,18 +109,18 @@ Clear current session history:
 
 ### /session
 
-Switch session:
+Chuyển session:
 
 ```
 /session main
 /session work
 ```
 
-## Model Commands
+## Lệnh Model
 
 ### /model
 
-Switch model temporarily:
+Chuyển model tạm thời:
 
 ```
 /model anthropic/claude-sonnet-4
@@ -130,7 +130,7 @@ Switch model temporarily:
 
 ### /thinking
 
-Set thinking/reasoning level:
+Đặt mức độ suy nghĩ:
 
 ```
 /thinking off
@@ -139,11 +139,11 @@ Set thinking/reasoning level:
 /thinking high
 ```
 
-## Tool Commands
+## Lệnh Tool
 
 ### /exec
 
-Execute command directly:
+Thực thi lệnh trực tiếp:
 
 ```
 /exec ls -la
@@ -152,18 +152,18 @@ Execute command directly:
 
 ### /tool
 
-Invoke tool:
+Gọi tool:
 
 ```
 /tool web.search "OpenClaw docs"
 /tool browser.goto "https://example.com"
 ```
 
-## Memory Commands
+## Lệnh Bộ nhớ
 
 ### /remember
 
-Save to long-term memory:
+Lưu vào bộ nhớ dài hạn:
 
 ```
 /remember My API key is stored in .env
@@ -172,7 +172,7 @@ Save to long-term memory:
 
 ### /recall
 
-Search memory:
+Tìm kiếm bộ nhớ:
 
 ```
 /recall API key
@@ -181,15 +181,15 @@ Search memory:
 
 ### /forget
 
-Remove from memory:
+Xóa khỏi bộ nhớ:
 
 ```
 /forget API key
 ```
 
-## Custom Commands
+## Lệnh tùy chỉnh
 
-### Configuration
+### Cấu hình
 
 ```json5
 {
@@ -213,17 +213,17 @@ Remove from memory:
 }
 ```
 
-### Action Types
+### Loại hành động
 
-| Action | Description |
-|--------|-------------|
-| `message` | Send as user message |
-| `prompt` | Send as system prompt |
-| `tool` | Invoke tool |
-| `exec` | Execute command |
-| `switch` | Switch session/model |
+| Hành động | Mô tả |
+|-----------|-------|
+| `message` | Gửi như tin nhắn người dùng |
+| `prompt` | Gửi như system prompt |
+| `tool` | Gọi tool |
+| `exec` | Thực thi lệnh |
+| `switch` | Chuyển session/model |
 
-## Channel-Specific
+## Riêng cho từng kênh
 
 Một số commands có thể khác nhau theo channel:
 
@@ -242,9 +242,9 @@ Một số commands có thể khác nhau theo channel:
 }
 ```
 
-## Permissions
+## Quyền hạn
 
-### Restrict Commands
+### Giới hạn lệnh
 
 ```json5
 {
@@ -255,7 +255,7 @@ Một số commands có thể khác nhau theo channel:
 }
 ```
 
-## Aliases
+## Bí danh
 
 ```json5
 {
@@ -270,40 +270,40 @@ Một số commands có thể khác nhau theo channel:
 }
 ```
 
-## Help
+## Trợ giúp
 
-### List All Commands
+### Liệt kê tất cả lệnh
 
 ```
 /help
 ```
 
-### Command Help
+### Trợ giúp cho lệnh cụ thể
 
 ```
 /help model
 /help session
 ```
 
-## Troubleshooting
+## Khắc phục sự cố
 
-### Command không được nhận
+### Lệnh không được nhận
 
-1. Verify starts với `/`
-2. Check no space trước `/`
-3. Verify command exists
+1. Xác nhận bắt đầu bằng `/`
+2. Kiểm tra không có khoảng trắng trước `/`
+3. Xác nhận lệnh tồn tại
 
-### Permission denied
+### Bị từ chối quyền
 
-1. Check user permissions
-2. Verify command không restricted
-3. Contact admin
+1. Kiểm tra quyền người dùng
+2. Xác nhận lệnh không bị giới hạn
+3. Liên hệ admin
 
-### Custom command không hoạt động
+### Lệnh tùy chỉnh không hoạt động
 
-1. Verify syntax trong config
-2. Restart Gateway
-3. Check logs
+1. Xác nhận cú pháp trong config
+2. Khởi động lại Gateway
+3. Kiểm tra logs
 
 ## Xem thêm
 
