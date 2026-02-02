@@ -207,6 +207,144 @@ Giữ smaller/quantized models **tránh xa tool access** do vulnerability với 
 }
 ```
 
+## Authentication
+
+### OAuth vs API Key - nên dùng gì?
+
+| Method | Ưu điểm | Nhược điểm |
+|--------|---------|------------|
+| **OAuth** | Dùng Claude subscription | Cần refresh tokens |
+| **API Key** | Đơn giản, stable | Trả tiền riêng |
+
+### Setup-token flow là gì?
+
+Cho Claude Pro/Team subscribers:
+```bash
+openclaw onboard --auth-choice oauth
+```
+
+Sử dụng Claude subscription thay vì API riêng.
+
+### Làm sao để thêm API key?
+
+```bash
+# Interactive
+openclaw onboard
+
+# Non-interactive
+export ANTHROPIC_API_KEY="sk-..."
+openclaw onboard --auth-choice apiKey
+```
+
+## System Requirements
+
+### Minimum Requirements
+
+| Resource | Minimum |
+|----------|---------|
+| CPU | 1 vCPU |
+| RAM | 1GB |
+| Disk | 500MB |
+| Node.js | >= 22 |
+
+### Raspberry Pi có chạy được không?
+
+**Có!** Raspberry Pi 4 compatible. Tuy nhiên, local models (Ollama) có thể chậm.
+
+### Chạy trên VPS cần gì?
+
+1. Ubuntu 22.04+ recommended
+2. SSH access
+3. Node.js 22+
+4. Port 18789 (Gateway)
+5. Port 18790 (Web UI)
+
+## Backup & Migration
+
+### Backup dữ liệu thế nào?
+
+```bash
+# Backup config
+cp -r ~/.openclaw ~/.openclaw.backup
+
+# Hoặc specific files
+tar -czvf openclaw-backup.tar.gz \
+  ~/.openclaw/openclaw.json \
+  ~/.openclaw/agents/
+```
+
+### Sessions lưu ở đâu?
+
+```
+~/.openclaw/agents/<agentId>/sessions/
+```
+
+### Migrate sang máy mới?
+
+1. Copy `~/.openclaw/` directory
+2. Install OpenClaw trên máy mới
+3. Run `openclaw doctor` để verify
+
+## Advanced Topics
+
+### Docker có được hỗ trợ không?
+
+**Có:**
+```bash
+docker run -d \
+  --name openclaw \
+  -p 18789:18789 \
+  -v openclaw-data:/data \
+  ghcr.io/anthropics/openclaw
+```
+
+### Sandboxing là gì?
+
+Sandboxing isolate command execution:
+- Container-based
+- Limited filesystem
+- Network restrictions
+
+Enable:
+```json5
+{
+  "tools": {
+    "exec": {
+      "sandboxing": true
+    }
+  }
+}
+```
+
+### Multi-agent routing hoạt động thế nào?
+
+```json5
+{
+  "agents": {
+    "coding": {
+      "model": "anthropic/claude-sonnet-4",
+      "routePatterns": ["code", "programming"]
+    },
+    "research": {
+      "model": "openai/gpt-4o",
+      "routePatterns": ["research", "find"]
+    }
+  }
+}
+```
+
+### Memory system là gì?
+
+Semantic search và persistent memory:
+```json5
+{
+  "memory": {
+    "enabled": true,
+    "embeddings": "openai/text-embedding-3-small"
+  }
+}
+```
+
 ## Miscellaneous
 
 ### Tôi có thể tự host không?
@@ -224,7 +362,8 @@ Giữ smaller/quantized models **tránh xa tool access** do vulnerability với 
 | Enterprise | Microsoft Teams, Google Chat |
 | Privacy | Signal |
 | Self-hosted | Mattermost, Matrix |
-| Other | iMessage, Nostr, Twitch |
+| Regional | LINE, Zalo |
+| Other | iMessage |
 
 ### Làm sao để contribute?
 
@@ -234,8 +373,16 @@ Giữ smaller/quantized models **tránh xa tool access** do vulnerability với 
 
 Chi tiết tại: [GitHub](https://github.com/openclaw/openclaw)
 
+### Cần help thêm?
+
+- **Logs:** `openclaw logs --follow`
+- **Doctor:** `openclaw doctor`
+- **Status:** `openclaw status --deep`
+- **Health:** `openclaw health --json`
+
 ## Xem thêm
 
 - [Khắc phục sự cố](/help/troubleshooting)
 - [Bắt đầu nhanh](/start-here/getting-started)
 - [Cấu hình](/cli/configure)
+- [Security](/gateway-ops/security)
