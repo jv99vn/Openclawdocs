@@ -83,7 +83,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: 'Gateway Runbook', link: '/gateway-ops/gateway-runbook' },
-            { text: 'Gateway Protocol', link: '/gateway-ops/gateway-protocol' },
+            { text: 'Gateway Protocol', link: '/gateway-ops/protocol' },
             { text: 'Configuration', link: '/gateway-ops/configuration' },
             { text: 'Environment Variables', link: '/gateway-ops/environment-variables' },
             { text: 'Authentication', link: '/gateway-ops/authentication' },
@@ -242,7 +242,10 @@ export default defineConfig({
             { text: 'hooks', link: '/cli/hooks' },
             { text: 'pairing', link: '/cli/pairing' },
             { text: 'security', link: '/cli/security' },
-            { text: 'update', link: '/cli/update' }
+            { text: 'update', link: '/cli/update' },
+            { text: 'tui', link: '/cli/tui' },
+            { text: 'cron', link: '/cli/cron' },
+            { text: 'voicecall', link: '/cli/voicecall' }
           ]
         },
         {
