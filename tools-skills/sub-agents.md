@@ -1,15 +1,15 @@
-# Sub-Agents
+# Sub-Agents (Agent phụ)
 
-Sub-Agents cho phép main agent delegate tasks cho specialized agents khác.
+Sub-Agents cho phép agent chính ủy thác công việc cho các agent chuyên biệt khác.
 
 ## Tổng quan
 
-- **Specialization** - Mỗi sub-agent có expertise riêng
-- **Delegation** - Main agent delegate tasks
-- **Parallel** - Có thể chạy parallel
-- **Isolation** - Mỗi sub-agent có context riêng
+- **Chuyên môn hóa** - Mỗi sub-agent có chuyên môn riêng
+- **Ủy thác** - Agent chính ủy thác công việc
+- **Song song** - Có thể chạy đồng thời
+- **Cô lập** - Mỗi sub-agent có ngữ cảnh riêng
 
-## How It Works
+## Cách hoạt động
 
 ```
 User Message → Main Agent → [Analyze task]
@@ -23,9 +23,9 @@ User Message → Main Agent → [Analyze task]
                                                           └─ Main Agent compiles response
 ```
 
-## Configuration
+## Cấu hình
 
-### Define Sub-Agents
+### Định nghĩa Sub-Agents
 
 ```json5
 {
@@ -58,7 +58,7 @@ User Message → Main Agent → [Analyze task]
 }
 ```
 
-### Enable Sub-Agent Routing
+### Bật định tuyến Sub-Agent
 
 ```json5
 {
@@ -74,11 +74,11 @@ User Message → Main Agent → [Analyze task]
 }
 ```
 
-## Routing Modes
+## Chế độ định tuyến
 
-### Auto
+### Tự động
 
-Main agent tự động route dựa trên task:
+Agent chính tự động định tuyến dựa trên công việc:
 
 ```json5
 {
@@ -93,18 +93,18 @@ Main agent tự động route dựa trên task:
 }
 ```
 
-### Manual
+### Thủ công
 
-User explicitly chọn sub-agent:
+Người dùng chọn sub-agent rõ ràng:
 
 ```
 /agent coder
 Write a Python script to...
 ```
 
-### Hybrid
+### Kết hợp
 
-Auto-suggest, user confirm:
+Tự động gợi ý, người dùng xác nhận:
 
 ```json5
 {
@@ -115,9 +115,9 @@ Auto-suggest, user confirm:
 }
 ```
 
-## Tool: delegate
+## Tool: ủy thác
 
-Main agent sử dụng `delegate` tool:
+Agent chính sử dụng `delegate` tool:
 
 ```json
 {
@@ -130,9 +130,9 @@ Main agent sử dụng `delegate` tool:
 }
 ```
 
-## Parallel Execution
+## Thực thi song song
 
-Multiple sub-agents có thể chạy parallel:
+Nhiều sub-agents có thể chạy đồng thời:
 
 ```json5
 {
@@ -147,7 +147,7 @@ Multiple sub-agents có thể chạy parallel:
 }
 ```
 
-### Example
+### Ví dụ
 
 ```
 User: Research quantum computing and write a summary
@@ -157,9 +157,9 @@ Main Agent: [Delegates to both researcher and writer in parallel]
   └─ writer: [Waits for research, then writes summary]
 ```
 
-## Context Sharing
+## Chia sẻ ngữ cảnh
 
-### Shared Context
+### Ngữ cảnh chung
 
 ```json5
 {
@@ -173,7 +173,7 @@ Main Agent: [Delegates to both researcher and writer in parallel]
 }
 ```
 
-### Isolated Context
+### Ngữ cảnh cô lập
 
 ```json5
 {
@@ -187,11 +187,11 @@ Main Agent: [Delegates to both researcher and writer in parallel]
 }
 ```
 
-## Response Handling
+## Xử lý phản hồi
 
-### Merge
+### Gộp
 
-Combine responses từ multiple sub-agents:
+Kết hợp phản hồi từ nhiều sub-agents:
 
 ```json5
 {
@@ -205,9 +205,9 @@ Combine responses từ multiple sub-agents:
 }
 ```
 
-### Sequential
+### Tuần tự
 
-Chain sub-agent responses:
+Chuỗi phản hồi sub-agent:
 
 ```json5
 {
@@ -222,9 +222,9 @@ Chain sub-agent responses:
 }
 ```
 
-## Use Cases
+## Trường hợp sử dụng
 
-### Code Review
+### Đánh giá code
 
 ```
 User: Review this code for bugs
@@ -237,7 +237,7 @@ Main Agent → coder (sub-agent)
 Main Agent compiles response
 ```
 
-### Research + Write
+### Nghiên cứu + Viết
 
 ```
 User: Write a report about AI trends
@@ -247,7 +247,7 @@ Main Agent:
   └─ writer: [Writes report based on research]
 ```
 
-### Multi-language
+### Đa ngôn ngữ
 
 ```
 User: Translate and localize this content
@@ -257,22 +257,22 @@ Main Agent:
   └─ localizer: [Adapts for local culture]
 ```
 
-## Best Practices
+## Thực hành tốt nhất
 
-### Specialization
+### Chuyên môn hóa
 
-Mỗi sub-agent nên có clear specialization:
-- Specific system prompt
-- Relevant tools only
-- Appropriate model
+Mỗi sub-agent nên có chuyên môn rõ ràng:
+- System prompt cụ thể
+- Chỉ các tools liên quan
+- Model phù hợp
 
-### Token Efficiency
+### Tiết kiệm token
 
-Sub-agents có context riêng → save tokens:
-- Không cần full history
-- Chỉ relevant context
+Sub-agents có ngữ cảnh riêng → tiết kiệm tokens:
+- Không cần lịch sử đầy đủ
+- Chỉ ngữ cảnh liên quan
 
-### Error Handling
+### Xử lý lỗi
 
 ```json5
 {
@@ -287,25 +287,25 @@ Sub-agents có context riêng → save tokens:
 }
 ```
 
-## Troubleshooting
+## Khắc phục sự cố
 
-### Routing incorrect
+### Định tuyến sai
 
-1. Review routing patterns
-2. Use hybrid mode để debug
-3. Check task analysis
+1. Xem lại các patterns định tuyến
+2. Dùng chế độ kết hợp để debug
+3. Kiểm tra phân tích tác vụ
 
-### Sub-agent không respond
+### Sub-agent không phản hồi
 
-1. Verify agent configured
-2. Check model available
-3. Review sub-agent logs
+1. Xác nhận agent đã cấu hình
+2. Kiểm tra model có sẵn
+3. Xem logs của sub-agent
 
-### Slow response
+### Phản hồi chậm
 
-1. Reduce parallel agents
-2. Use faster models cho sub-agents
-3. Simplify tasks
+1. Giảm số lượng agent song song
+2. Dùng models nhanh hơn cho sub-agents
+3. Đơn giản hóa các tác vụ
 
 ## Xem thêm
 

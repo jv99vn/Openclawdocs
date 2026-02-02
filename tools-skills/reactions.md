@@ -1,30 +1,30 @@
-# Reactions
+# Phản hồi Emoji (Reactions)
 
-Reactions cho phép agent respond với emoji reactions thay vì hoặc bổ sung cho text responses.
+Reactions cho phép agent phản hồi bằng emoji thay vì hoặc bổ sung cho text responses.
 
 ## Tổng quan
 
-- **Non-verbal feedback** - React mà không cần text
-- **Quick acknowledgment** - Nhanh chóng confirm
-- **Channel support** - Hỗ trợ nhiều platforms
-- **Configurable** - Customize reaction behavior
+- **Phản hồi không lời** - React mà không cần gõ chữ
+- **Xác nhận nhanh** - Nhanh chóng confirm nhận tin
+- **Hỗ trợ đa kênh** - Hoạt động trên nhiều platforms
+- **Tùy chỉnh được** - Cấu hình reaction behavior
 
-## Supported Channels
+## Các kênh hỗ trợ
 
-| Channel | Reactions |
-|---------|-----------|
-| Discord | ✅ Full emoji set |
-| Slack | ✅ Full emoji set |
-| Telegram | ✅ Limited set |
-| WhatsApp | ✅ Limited set |
+| Kênh | Reactions |
+|------|-----------|
+| Discord | ✅ Đầy đủ emoji |
+| Slack | ✅ Đầy đủ emoji |
+| Telegram | ✅ Giới hạn |
+| WhatsApp | ✅ Giới hạn |
 | iMessage | ✅ Tapbacks |
-| Signal | ✅ Limited set |
+| Signal | ✅ Giới hạn |
 
-## How It Works
+## Cách hoạt động
 
-### Auto-Reactions
+### Tự động React
 
-Agent tự động react dựa trên context:
+Agent tự động react dựa trên ngữ cảnh:
 
 ```json5
 {
@@ -41,9 +41,9 @@ Agent tự động react dựa trên context:
 }
 ```
 
-### Tool-Based
+### Dựa trên Tool
 
-Agent uses tool để react:
+Agent sử dụng tool để react:
 
 ```json
 {
@@ -55,9 +55,9 @@ Agent uses tool để react:
 }
 ```
 
-## Configuration
+## Cấu hình
 
-### Basic
+### Cơ bản
 
 ```json5
 {
@@ -68,7 +68,7 @@ Agent uses tool để react:
 }
 ```
 
-### Full Configuration
+### Cấu hình đầy đủ
 
 ```json5
 {
@@ -110,37 +110,37 @@ Agent uses tool để react:
 }
 ```
 
-## Use Cases
+## Trường hợp sử dụng
 
-### Acknowledgment
+### Xác nhận
 
-User: Please remind me about the meeting
-Agent: [Reacts with 👍]
-Agent: I'll remind you about the meeting at 3pm
+User: Nhắc tôi về cuộc họp
+Agent: [React 👍]
+Agent: Tôi sẽ nhắc bạn về cuộc họp lúc 3pm
 
-### Processing Indicator
+### Chỉ báo đang xử lý
 
-User: Analyze this data...
-Agent: [Reacts with 🤔] (thinking)
-Agent: [Removes 🤔, adds ✅] (done)
-Agent: Here's my analysis...
+User: Phân tích dữ liệu này...
+Agent: [React 🤔] (đang suy nghĩ)
+Agent: [Xóa 🤔, thêm ✅] (xong)
+Agent: Đây là phân tích của tôi...
 
-### Feedback
+### Phản hồi
 
-User: Great work!
-Agent: [Reacts with 🎉]
+User: Làm tốt lắm!
+Agent: [React 🎉]
 
-### Error Indication
+### Chỉ báo lỗi
 
-User: Run impossible task
-Agent: [Reacts with ❌]
-Agent: Sorry, I cannot do that because...
+User: Chạy tác vụ bất khả thi
+Agent: [React ❌]
+Agent: Xin lỗi, tôi không thể làm điều đó vì...
 
-## Platform Specifics
+## Đặc thù từng nền tảng
 
 ### Discord
 
-Full custom emoji support:
+Hỗ trợ đầy đủ custom emoji:
 
 ```json5
 {
@@ -160,7 +160,7 @@ Full custom emoji support:
 
 ### Slack
 
-Workspace emoji support:
+Hỗ trợ workspace emoji:
 
 ```json5
 {
@@ -176,25 +176,25 @@ Workspace emoji support:
 
 ### iMessage
 
-Tapback reactions:
+Các reaction Tapback:
 
-| Tapback | Meaning |
+| Tapback | Ý nghĩa |
 |---------|---------|
-| ❤️ | Love |
-| 👍 | Like |
-| 👎 | Dislike |
-| 😂 | Laugh |
-| ‼️ | Emphasize |
-| ❓ | Question |
+| ❤️ | Yêu thích |
+| 👍 | Thích |
+| 👎 | Không thích |
+| 😂 | Hài hước |
+| ‼️ | Nhấn mạnh |
+| ❓ | Thắc mắc |
 
 ### WhatsApp
 
-Limited to standard reactions:
+Giới hạn các reaction tiêu chuẩn:
 - 👍 👎 ❤️ 😂 😮 😢 🙏
 
 ## Tool: react
 
-### Add Reaction
+### Thêm Reaction
 
 ```json
 {
@@ -206,7 +206,7 @@ Limited to standard reactions:
 }
 ```
 
-### Remove Reaction
+### Xóa Reaction
 
 ```json
 {
@@ -219,9 +219,9 @@ Limited to standard reactions:
 }
 ```
 
-## Reaction Rules
+## Quy tắc Reaction
 
-### Pattern Matching
+### Khớp mẫu (Pattern)
 
 ```json5
 {
@@ -240,7 +240,7 @@ Limited to standard reactions:
 }
 ```
 
-### Probability
+### Xác suất
 
 ```json5
 {
@@ -256,7 +256,7 @@ Limited to standard reactions:
 }
 ```
 
-### Conditions
+### Điều kiện
 
 ```json5
 {
@@ -275,39 +275,39 @@ Limited to standard reactions:
 }
 ```
 
-## Best Practices
+## Thực hành tốt nhất
 
-### Appropriate Usage
+### Sử dụng phù hợp
 
-- Use reactions cho quick acknowledgment
-- Không overuse - có thể annoying
-- Match channel culture
+- Dùng reactions để xác nhận nhanh
+- Không lạm dụng - có thể gây phiền
+- Phù hợp với văn hóa từng kênh
 
-### Processing Indicators
+### Chỉ báo xử lý
 
-- React với 🤔 khi thinking
-- Remove và add ✅ khi done
-- Provides visual feedback
+- React với 🤔 khi đang suy nghĩ
+- Xóa và thêm ✅ khi xong
+- Cung cấp phản hồi trực quan
 
-## Troubleshooting
+## Khắc phục sự cố
 
 ### Reactions không xuất hiện
 
-1. Check channel support
-2. Verify emoji valid
-3. Check bot permissions
+1. Kiểm tra kênh có hỗ trợ không
+2. Xác nhận emoji hợp lệ
+3. Kiểm tra quyền của bot
 
-### Wrong emoji
+### Sai emoji
 
-1. Verify emoji format
-2. Check channel-specific format
-3. Use Unicode emoji
+1. Xác nhận định dạng emoji
+2. Kiểm tra định dạng riêng của kênh
+3. Sử dụng Unicode emoji
 
-### Rate limited
+### Bị giới hạn tốc độ
 
-1. Reduce reaction frequency
-2. Check platform limits
-3. Add delays between reactions
+1. Giảm tần suất reaction
+2. Kiểm tra giới hạn của nền tảng
+3. Thêm delay giữa các reactions
 
 ## Xem thêm
 
